@@ -17,6 +17,9 @@ Para las gráficas 2D: [Talking Physics](https://talkingphysics.wordpress.com/20
 
 Documentación: [Manim](https://manim.readthedocs.io/en/latest/)
 
+## Agradecimiento especial:
+
+Para el óvalo de cassini al usuario del level 314: [level 314 youtube channel](https://www.youtube.com/watch?v=zReqQ8NMsI0)
 
 ### Módulos y librerías necesarios:
 ```python

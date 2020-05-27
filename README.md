@@ -485,3 +485,47 @@ El resultado es este:
 
 -![](Hibridacion.gif)
 
+En este Issue me ayudaron con lo del orbital P, y el resultado es impresionante. Este es el código del usuario que me ayudó y el issue es: [Cassini_oval3d](https://github.com/3b1b/manim/issues/1100)
+
+```python
+class S04_3D_Cassini_Oval(ThreeDScene):
+    def parametric_CO(self, u,v):
+        # equation for 2d Cassini Oval
+        M = (foci_A ** 2) * np.cos(2 * u)\
+        + (np.sqrt( (foci_B ** 4)-(foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2)) ))
+        x = np.cos(u) * np.sqrt(M)
+        y = np.sin(u) * np.sqrt(M)
+
+        # 3d rotation around X axes
+        z = y * np.sin(v) # be sure to calculate Z first size we modify Y
+        y = y * np.cos(v)
+        
+        return np.array([x, y, z])
+
+    def construct(self):
+        # controls how many squares the approximation grid is broken into
+        parametric_resolution = 24
+        r_scale = 0.35
+        
+        boundaries = { "u_min": 0, "u_max": TAU,"v_min": 0, "v_max": PI}
+
+        cassini_oval = ParametricSurface(
+                self.parametric_CO, **boundaries
+                , checkerboard_colors=[BLUE_E, BLUE_E], fill_opacity=0.65,
+                resolution=(parametric_resolution, math.floor(parametric_resolution * r_scale))).scale(1.5)
+        axes = ThreeDAxes()
+
+   
+        # self.set_camera_orientation(gamma = 80 * DEGREES, phi = 15 * DEGREES)
+        # self.add(cassini_oval, axes)
+        self.play(ShowCreation(axes))
+        self.play(ShowCreation(cassini_oval))
+        self.set_camera_orientation(phi=80 * DEGREES,theta=-60*DEGREES)
+        self.begin_ambient_camera_rotation(rate=0.6)
+        # use custom camera rotation for multiple angles instead of manim standard
+        # self.begin_ambient_camera_rotation_multi(rate_theta=0.8, rate_gamma=0.04, rate_phi=0.4)
+        self.wait(5)
+
+```
+
+ ![](Cassini_oval.gif)

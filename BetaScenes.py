@@ -6,14 +6,14 @@ import math
 class IntroErwin(Scene):
 
     def construct(self):
-        title = TextMobject("Erwin", "Schrodinger")
+        title = TextMobject("Erwin", "Schrödinger")
         text = TexMobject(r"\Psi (r,\theta ,\phi )= ", "R(r)", "P(\\theta)", "F(\phi)")
-        text_2 = TextMobject("Funcion de probabilidad")
+        text_2 = TextMobject("Función de probabilidad")
         text_3 =TexMobject(r"\Psi^{2}")
         image = ImageMobject("note")
         title.next_to(image, UP, buff=0.3)
         title[1].set_color(GREEN)
-        transform_title = TextMobject("Ecuacion de Schrodinger")
+        transform_title = TextMobject("Ecuación de Schrödinger")
         transform_title.to_corner(UP + LEFT)
         transform_text = TexMobject(r"\Psi _{nlm}(r,\theta,\varphi)=\sqrt{(\frac{2}{na_{0}})^{3}\tfrac{(n-l-1)!}{2n(n+l)!}}e^{\frac{-\rho}{2}}\rho^{l}L_{n-l-1}^{2l+1}(\rho )Y_{lm}(\theta ,\rho)")
         text_2.next_to(transform_text,DOWN, buff=0.3)
@@ -408,3 +408,108 @@ class Hibridation(Scene):
 
         self.wait(10)
 
+class Screenshot(Scene):
+
+    def construct(self):
+        title = TextMobject("HIBRIDACION DEL CARBONO ")
+        title_2 = TextMobject("PARTE I - ORBITALES E HIBRIDACION ")
+        image = ImageMobject("logo")
+        line = Line(ORIGIN, RIGHT * FRAME_WIDTH, buff=2)
+        line.move_to(RIGHT)
+        title.next_to(line, UP)
+        title_2.next_to(line, DOWN)
+        title.set_color(YELLOW)
+        image.to_edge(LEFT,buff=1)
+
+        self.play(
+            ShowCreation(line),
+            FadeInFromDown(title),
+            FadeInFromDown(title_2),
+            FadeInFrom(image, UP)
+
+        )
+
+        self.wait(3)
+
+        self.play(
+            LaggedStart(FadeOutAndShiftDown,title),
+            LaggedStart(FadeOutAndShiftDown, title_2),
+            LaggedStart(FadeOutAndShiftDown, line),
+            LaggedStart(FadeOutAndShiftDown, image)
+        )
+
+
+
+# "foci" A controls the shape of the oval
+# 0 <= foci_A <= 1.0
+foci_A = .99
+foci_B = 1.0
+
+class S04_3D_Cassini_Oval(ThreeDScene):
+    
+    def parametric_CO(self, u,v):
+        
+        # equation for 2d Cassini Oval
+        M = (foci_A ** 2) * np.cos(2 * u)\
+        + (np.sqrt( (foci_B ** 4)-(foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2)) ))
+        x = np.cos(u) * np.sqrt(M)
+        y = np.sin(u) * np.sqrt(M)
+
+        # 3d rotation around X axes
+        z = y * np.sin(v) # be sure to calculate Z first size we modify Y
+        y = y * np.cos(v)
+        
+        return np.array([x, y, z])
+    
+    def parametric_CO_z(self, u,v):
+        
+        # equation for 2d Cassini Oval
+        M = (foci_A ** 2) * np.cos(2 * u)\
+        + (np.sqrt( (foci_B ** 4)-(foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2)) ))
+        z = np.cos(u) * np.sqrt(M)
+        y = np.sin(u) * np.sqrt(M)
+
+        # 3d rotation around X axes
+        x = y * np.sin(v) # be sure to calculate Z first size we modify Y
+        y = y * np.cos(v)
+        
+        return np.array([x, y, z])
+
+    def construct(self):
+        # controls how many squares the approximation grid is broken into
+        parametric_resolution = 50
+        r_scale = 0.35
+
+        boundaries = { "u_min": 0, "u_max": TAU,"v_min": 0, "v_max": PI}
+
+        cassini_oval_x = ParametricSurface(
+                self.parametric_CO, **boundaries
+                , checkerboard_colors=[RED_E, RED_E], fill_opacity=0.65,
+            resolution=(parametric_resolution, math.floor(parametric_resolution * r_scale))).scale(1.5)
+
+        cassini_oval_z = ParametricSurface(
+                self.parametric_CO_z, **boundaries
+                , checkerboard_colors=[RED_E, RED_E], fill_opacity=0.65,
+            resolution=(parametric_resolution, math.floor(parametric_resolution * r_scale))).scale(1.5)
+        
+        axes = ThreeDAxes()
+        self.set_camera_orientation(phi=80 * DEGREES,theta=-60*DEGREES)
+        self.begin_ambient_camera_rotation(rate=0.6)
+        self.play(ShowCreation(axes))
+        self.play(ShowCreation(cassini_oval_x))
+
+        self.wait(5)
+
+        self.play(
+
+            LaggedStart(FadeOutAndShiftDown,cassini_oval_x)
+
+            )
+        self.play(ShowCreation(cassini_oval_z))
+
+        self.wait(5)
+        # use custom camera rotation for multiple angles instead of manim standard
+        # self.begin_ambient_camera_rotation_multi(rate_theta=0.8, rate_gamma=0.04, rate_phi=0.4)
+
+
+   

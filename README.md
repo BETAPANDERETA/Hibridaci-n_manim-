@@ -7,8 +7,13 @@
 Producción audiovisual e ilustrativa de hibridación de orbitales, esta es la parte I del proyecto.
 Los requisitos y la guía para instalar manim se encuentran en:  [Manim 3b1b](https://github.com/3b1b/manim)
 
-El resultado final del demo de esta primera parte es: [VideoFinal](https://youtu.be/_e26SiGLOPM)
-El vídeo FINAL con voz y edición es este [RESULTADO FINAL](https://www.youtube.com/watch?v=XPMdXOwwCK0&feature=youtu.be)
+
+<p align="center">
+	El demo de esta primera parte es: [DEMO](https://youtu.be/_e26SiGLOPM)
+</p>
+<p align="center">
+	El video FINAL con voz y edición es este [RESULTADO FINAL](https://www.youtube.com/watch?v=XPMdXOwwCK0&feature=youtu.be)
+</p>
 
 ### Fuentes de interés y agradecimientos:
 

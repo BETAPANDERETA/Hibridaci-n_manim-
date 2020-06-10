@@ -1,4 +1,4 @@
-### Hibridación de orbitales hecho en Manim (versión 3/Feb/2019 - python)
+### Hibridación de orbitales (DEMO) hecho en Manim (versión 3/Feb/2019 - python)
 
 <p align="center">
   <img width="460" height="300" src=Miniatura.gif>
@@ -533,3 +533,7 @@ class S04_3D_Cassini_Oval(ThreeDScene):
 ```
 
  ![](Cassini_oval.gif)
+
+<p align="center">
+  CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM>
+</p>

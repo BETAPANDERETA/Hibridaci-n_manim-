@@ -1,20 +1,29 @@
-### Hibridación de orbitales (DEMO) hecho en Manim (versión 3/Feb/2019 - python)
+### Hibridación de orbitales hecho en Manim (versión 3/Feb/2019 - python)
+
+### Autores:
+    Daniel Germán Martínez Muñoz  (Usuario github: dmartinezmu).
+    Leonardo Felipe Betancur Díaz (Usuario github: BETAPANDERETA).
+    Julian Felipe Ramirez Pardo   (Usuario github: julianramirez34).
 
 <p align="center">
   <img width="460" height="300" src=Miniatura.gif>
 </p>
 
-Producción audiovisual e ilustrativa de hibridación de orbitales, esta es la parte I del proyecto.
+Producción audiovisual e ilustrativa de hibridación de orbitales.
 Los requisitos y la guía para instalar manim se encuentran en:  [Manim 3b1b](https://github.com/3b1b/manim)
 
 
 <p align="center">
-	El demo de esta primera parte es: [DEMO](https://youtu.be/_e26SiGLOPM)
-</p>
-<p align="center">
-	El video FINAL con voz y edición es este [RESULTADO FINAL](https://www.youtube.com/watch?v=XPMdXOwwCK0&feature=youtu.be)
+	El video FINAL con voz y edición es este [RESULTADO FINAL] #Video final link#
 </p>
 
+### Aplicaciones usadas:
+    Adobe Illustrator CC -> Ilustraciones realizadas.
+    Adobe Premiere Pro   -> Edición video.
+    Adobe Audition       -> Edición audio.
+    Sony Vegas           -> Edición video.
+
+-![](audition.png)
 ### Fuentes de interés y agradecimientos:
 
 Para los 3D Plots:[Theorem of Beethoven](https://github.com/Elteoremadebeethoven/AnimationsWithManim/blob/master/English/6b_plots_3D/scenes.md#programs)
@@ -34,6 +43,8 @@ Para el óvalo de cassini al usuario del level 314: [level 314 youtube channel](
 from big_ol_pile_of_manim_imports import *
 import math
 ```
+
+Además del conocimiento del lenguaje python, es necesario conocer latex.
 ### Escenas 
 ```python
 class IntroErwin(Scene):

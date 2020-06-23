@@ -1,4 +1,3 @@
-# Principios de Química.
 ## Hibridación de orbitales hecho en Manim.
 
 
@@ -864,5 +863,5 @@ El resultado es este:
 ![](compl_2.gif)
 
 <p align="center">
-  CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM>
+  CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM
 </p>

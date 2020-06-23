@@ -632,8 +632,6 @@ class  Hibridacion(Scene):
         self.play(FadeInFromDown(tex))
         self.wait(3)
         self.remove(tex)
-        
-
 
         self.play(
             Transform(tex, sp3),
@@ -652,6 +650,8 @@ class  Hibridacion(Scene):
 
 ```
 El resultado es este: 
+
+![](Hibridacion1.gif)
 
 ```python
 class  Config_electro(Scene):
@@ -738,6 +738,8 @@ class  Config_electro(Scene):
         )
         self.wait(3)
 ```
+El resultado es este: 
+![](Config_electro.gif)
 ```python
 
 class sp2_(Scene):
@@ -791,7 +793,8 @@ class sp2_(Scene):
 
 ```
 El resultado es:
- ![](sp2_2.gif)
+ ![](sp2__2.gif)
+
 ```python
 class sp_(Scene):
     def construct(self):
@@ -835,6 +838,8 @@ class sp_(Scene):
         )
         self.wait(2)
 ```
+El resultado es este: 
+![](compl_2.gif)
 
 <p align="center">
   CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM>

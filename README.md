@@ -1,7 +1,7 @@
 ## Hibridación de orbitales hecho en Manim.
 
 <p align="center">
-  <img width="460" height="300" src=s.gif>
+  <img width="460" height="300" src=Miniatura.gif>
 </p>
 
 ### Autores:

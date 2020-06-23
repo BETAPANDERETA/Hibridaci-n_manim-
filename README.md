@@ -7,7 +7,7 @@
 ### Autores:
 Daniel Germán Martínez Muñoz  (Usuario github: dmartinezmu).
 
-Leonardo Felipe Betancur Díaz (Usuario github: BETAPANDERETA).
+Leonardo Felipe Betancur Díaz
 
 
 

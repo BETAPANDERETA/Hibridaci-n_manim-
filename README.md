@@ -539,6 +539,302 @@ class S04_3D_Cassini_Oval(ThreeDScene):
 
  ![](Cassini_oval.gif)
 
+```python
+class  Hibridacion(Scene):
+    def construct(self):
+        tex = TextMobject("Hibridación ","del ","Carbono")    
+        tex[0].set_color(WHITE)
+        tex[1].set_color(WHITE)
+        tex[2].set_color(RED)
+        sp3 = TexMobject("{sp}^3 \\quad ","{sp}^2\\quad","{sp}")
+        square = Square()
+        square2 = Square()
+        square3 = Square()
+        square.move_to(sp3[0].get_center())
+        square2.move_to(sp3[1].get_center())
+        square3.move_to(sp3[2].get_center())
+        square.scale(0.5)
+        square2.scale(0.5)
+        square3.scale(0.5)
+        hydrogen_atom = Mobject()
+        title = TextMobject("Concepción clásica")
+
+        orbit = Circle(radius=1.3).scale(0.85)
+        proton = Dot(radius=0.4, color="GREY").scale(0.85)
+        elec = Dot(radius=0.2, color="BLUE").scale(0.85)
+        
+        p_charge = TexMobject("H", stroke_width=0.5)
+        e_charge = TexMobject("-",stroke_width=0.5)
+        hydrogen_atom2 = Mobject()
+
+        orbit2 = Circle(radius=1.3).scale(0.85)
+        proton2 = Dot(radius=0.4, color="GREY").scale(0.85)
+        elec2 = Dot(radius=0.2, color="BLUE").scale(0.85)
+        
+        p_charge2 = TexMobject("H", stroke_width=0.5)
+        e_charge2 = TexMobject("-",stroke_width=0.5)
+        
+        orbit2.move_to(orbit.get_center() + RIGHT*1)
+        elec2.move_to(orbit2.points[0])
+        proton2.move_to(orbit2.get_center())
+  
+        e_charge2.move_to(elec2.get_center())
+        
+        p_charge2.move_to(proton2.get_center())
+
+
+
+        title.move_to(title.get_center()+UP*2)
+        elec.move_to(orbit.points[0])
+  
+        e_charge.move_to(elec.get_center())
+        
+        p_charge.move_to(proton.get_center())
+
+        self.play(ShowCreation(title))
+
+        self.play(ShowCreation(orbit))
+
+        self.play(GrowFromCenter(proton), 
+                  GrowFromCenter(p_charge)
+                 )
+
+        self.play(GrowFromCenter(elec), 
+                  GrowFromCenter(e_charge)
+                 )
+        
+
+        self.play(MoveAlongPath(elec, orbit),
+                  MaintainPositionRelativeTo(e_charge, elec),
+                  run_time=5
+                 )
+        self.wait(1)
+
+        hydrogen_atom.add(orbit,elec, proton, e_charge, p_charge)
+        atom = hydrogen_atom.copy()
+        atom2 = hydrogen_atom.copy()
+        atom3 = hydrogen_atom.copy()
+        atom2.move_to(hydrogen_atom.get_center() + LEFT*1)
+        atom3.move_to(hydrogen_atom.get_center() + RIGHT*1)
+        atom3[1].move_to(atom3[0].points[14])
+        atom3[3].move_to(atom3[0].points[14])
+        
+
+        self.play(
+                Transform(atom,atom2),
+                Transform(hydrogen_atom,atom3),run_time =5
+        )
+        self.wait(2)
+
+        self.remove(atom , hydrogen_atom , title)
+      
+
+        self.play(FadeInFromDown(tex))
+        self.wait(3)
+        self.remove(tex)
+        
+
+
+        self.play(
+            Transform(tex, sp3),
+            FadeInFromDown(square)
+        )
+
+        self.wait(2)
+
+        self.play(Transform(square,square2))
+
+        self.wait(2)
+
+        self.play(Transform(square,square3))
+
+        self.wait(2)
+
+```
+El resultado es este: 
+
+```python
+class  Config_electro(Scene):
+    def construct(self):
+        tex = TextMobject("Configuración ","electrónica del ","Carbono")    
+        tex2 = TextMobject("Estado basal")    
+        tex2.set_color(BLUE)    
+        tex3 = TextMobject("Estado excitado")        
+        tex3.set_color(RED)
+        metv = ImageMobject("qf.gif")
+        sp = TexMobject("{sp}^3 \\quad ","{sp}^2\\quad","sp")
+        tex[0].set_color(WHITE)
+        tex[1].set_color(WHITE)
+        tex[2].set_color(RED) 
+        Confi = TexMobject("C={1s}^2 \\quad ","{2s}^2\\quad","{2p}^2")
+        Metano = TexMobject("H ", "H" , "H" , "H" , "C")
+        square = Square()
+        square2 = Square()
+        square3 = Square()
+        enlace1 = Line(np.array([0.5,0,0]),np.array([1,0,0]))
+        enlace2 = Line(np.array([-0.5,0,0]),np.array([-1,0,0]))
+        enlace3 = Line(np.array([0,0.5,0]),np.array([0,1,0]))
+        enlace4 = Line(np.array([0,-0.5,0]),np.array([0,-1,0]))
+        basal = ImageMobject("basalf.png")
+        excitado = ImageMobject("excitadof.png")
+        sp3_ = ImageMobject("sp3_blanco.png")
+        Metano[0].move_to(basal.get_center() + 1.5*UP)
+        Metano[1].move_to(basal.get_center() + 1.5*DOWN)
+        Metano[3].move_to(basal.get_center() + 1.5*RIGHT)
+        Metano[2].move_to(basal.get_center() + 1.5*LEFT)
+        Metano[4].move_to(basal.get_center())
+        sq = Square()
+        sq.scale(0.5)
+        
+        self.play(FadeInFromDown(tex))
+        self.wait(3)
+        self.remove(tex)
+        self.play(
+            Transform(tex, Confi)
+        )
+        Met = VGroup(enlace1,enlace2 , enlace3 , enlace4 , Metano[0] , Metano[1] , Metano[2] , Metano[3] , Metano[4] )
+        self.wait(3)
+        self.play(
+            Transform(tex, Met)
+        )
+        self.wait(3)
+        T2 = Met
+        T2.to_corner(UP + RIGHT)
+        T2.scale(0.5)
+        aux = sp[0].copy()
+        tex2.move_to(basal.get_center() + 2*UP)
+        tex3.move_to(tex2.get_center())
+        sp[0].move_to(tex2.get_center())
+        sp[0].set_color(YELLOW)
+        aux.to_corner(UP + LEFT)
+        sq.move_to(aux.get_center())
+        sq.set_color(YELLOW)
+        sp[1].move_to(aux.get_center() - 1*LEFT)
+        sp[2].move_to(aux.get_center() - 2*LEFT + 0.1*DOWN)
+        aux_ = VGroup(aux, sp[1], sp[2])
+        self.play(
+            FadeOutAndShift(tex)
+        )
+        metv.move_to(T2.get_center() + DOWN*3)
+        metv.scale(1.3)
+        self.play(
+            Write(tex2),
+            ShowCreation(T2) ,FadeIn(metv), 
+            FadeInFromLarge(basal)    
+        )
+        self.wait(3)
+        self.play(
+            Transform(tex2,tex3),
+            FadeOutAndShift(basal),    
+            FadeInFromPoint(excitado,[2,2,0])    
+        )
+        self.wait(3)
+        self.play(
+            Write(aux_) ,
+            Write(sq),
+            Transform(tex2,sp[0]),
+            FadeOutAndShift(excitado),    
+            FadeInFromPoint(sp3_,[-2,-2,0])    
+        )
+        self.wait(3)
+```
+```python
+
+class sp2_(Scene):
+    def construct(self):
+        sp = TexMobject("{sp}^3 \\quad ","{sp}^2\\quad","sp")
+        sp[0].to_corner(UP + LEFT)
+        sp[1].move_to(sp[0].get_center() - 1*LEFT)
+        sp[2].move_to(sp[0].get_center() - 2*LEFT + 0.1*DOWN)
+        sq = Square()
+        sq.scale(0.5)
+        sq.set_color(YELLOW)
+        sq.move_to(sp[1].get_center())
+        sq.set_color(YELLOW)
+        aux = VGroup(sp[0], sp[1], sp[2] , sq)
+        sp2_   = ImageMobject("sp2_blanco.png")
+        sp2_.scale(1.5)
+        titulo = TexMobject("{sp}^2")
+        Compuesto = TextMobject("Eteno")
+        Compuesto.scale(0.6)
+        titulo.move_to(sp2_.get_center() + 2*UP)
+        titulo.set_color(YELLOW)
+        Eteno = TexMobject("H" , "H" , "H" , "H" , "C" , "C")
+        enlace1 , enlace2 = Line(np.array([0.5 ,0.1 ,0]) ,np.array([1 ,0.1,0])) , Line(np.array([0.5,-0.1,0]) ,np.array([1,-0.1,0])) 
+        Eteno[4].move_to(enlace1.get_center() + 0.5*RIGHT + 0.1*DOWN)
+        Eteno[5].move_to(enlace1.get_center() + 0.5*LEFT  + 0.1*DOWN)
+        enlace3           = Line(np.array([0.5 ,0.5 ,0]) ,np.array([1 , 1 ,0]))
+        enlace4           = Line(np.array([0.5 ,-0.5,0]) ,np.array([1 ,-1 ,0]))
+        enlace3.move_to(Eteno[4].get_center() + 0.5*RIGHT+ 0.5*UP)
+        enlace4.move_to(Eteno[4].get_center() + 0.5*RIGHT+ 0.5*DOWN)
+        enlace5           = Line(np.array([-0.5,-0.5,0]) ,np.array([-1,-1 ,0]))
+        enlace6           = Line(np.array([-0.5,0.5 ,0]) ,np.array([-1, 1 ,0]))
+        enlace5.move_to(Eteno[5].get_center() + 0.5*LEFT + 0.5*DOWN)
+        enlace6.move_to(Eteno[5].get_center() + 0.5*LEFT + 0.5*UP)
+
+        Eteno[0].move_to(enlace3.get_center() + 0.5*UP   + 0.5*RIGHT)
+        Eteno[1].move_to(enlace4.get_center() + 0.5*DOWN + 0.5*RIGHT)
+        Eteno[2].move_to(enlace5.get_center() + 0.5*DOWN + 0.5*LEFT )
+        Eteno[3].move_to(enlace6.get_center() + 0.5*UP   + 0.5*LEFT )
+        Eteno_Completo = VGroup(enlace1 , enlace2 , enlace3 , enlace4 , enlace5 , enlace6 , Eteno[0] , Eteno[1] , Eteno[2] , Eteno[3] , Eteno[4] , Eteno[5])
+        Eteno_Completo.scale(0.7)
+        Eteno_Completo.to_corner(UR)
+        Compuesto.move_to(Eteno_Completo.get_center() + DOWN)
+        self.play(
+            Write(aux),
+            Write(titulo),
+            FadeInFromLarge(sp2_),
+            FadeInFromLarge(Compuesto),  
+            Write(Eteno_Completo), run_time= 4
+        )
+        self.wait(2)
+
+```
+
+```python
+class sp_(Scene):
+    def construct(self):
+        sp = TexMobject("{sp}^3 \\quad ","{sp}^2\\quad","sp")
+        sp[0].to_corner(UP + LEFT)
+        sp[1].move_to(sp[0].get_center() - 1*LEFT)
+        sp[2].move_to(sp[0].get_center() - 2*LEFT + 0.1*DOWN)
+        sq = Square()
+        sq.scale(0.5)
+        sq.set_color(YELLOW)
+        sq.move_to(sp[2].get_center())
+        sq.set_color(YELLOW)
+        aux = VGroup(sp[0], sp[1], sp[2] , sq)
+        sp1_   = ImageMobject("sp_blanco.png" )
+        sp1_.scale(1.5)
+        titulo = TexMobject("sp")
+        titulo.move_to(sp1_.get_center() + UP*2)
+        titulo.set_color(YELLOW)
+        Compuesto = TextMobject("Etino")
+        Compuesto.scale(0.6)
+        Etino = TexMobject("H" , "H" , "C" , "C")
+        enlace1 , enlace2 , enlace3 = Line(np.array([0.5,0,0]) ,np.array([1,0,0])) , Line(np.array([0.5,0.1,0]) ,np.array([1,0.1,0])) , Line(np.array([0.5,-0.1,0]) ,np.array([1,-0.1,0])) 
+        Etino[2].move_to(enlace1.get_center() + 0.5*RIGHT)
+        Etino[3].move_to(enlace1.get_center() + 0.5*LEFT )
+        enlace4 , enlace5           = Line(np.array([0.5,0,0]) ,np.array([1,0,0])) , Line(np.array([0.5,0,0]) ,np.array([1,0,0]))
+        enlace4.move_to(Etino[2].get_center() + 0.5*RIGHT)
+        enlace5.move_to(Etino[3].get_center() + 0.5*LEFT )
+        Etino[0].move_to(enlace4.get_center() + 0.5*RIGHT)
+        Etino[1].move_to(enlace5.get_center() + 0.5*LEFT )
+        Etino_Completo = VGroup(Etino[0], Etino[1], Etino[2], Etino[3], enlace1,  enlace2,  enlace3,  enlace4,  enlace5 )
+        Etino_Completo.to_corner(UR)
+        Etino_Completo.scale(0.7)
+        Compuesto.move_to(Etino_Completo.get_center() + DOWN)
+        
+        self.play(
+            Write(aux),
+            Write(titulo),
+            FadeInFromLarge(Compuesto),  
+            FadeInFromLarge(sp1_),
+            Write(Etino_Completo), run_time= 4
+        )
+        self.wait(2)
+```
+
 <p align="center">
   CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM>
 </p>

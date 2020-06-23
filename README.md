@@ -6,7 +6,6 @@ Daniel Germán Martínez Muñoz  (Usuario github: dmartinezmu).
 
 Leonardo Felipe Betancur Díaz (Usuario github: BETAPANDERETA).
 
-Julian Felipe Ramirez Pardo   (Usuario github: julianramirez34).
 
 <p align="center">
   <img width="460" height="300" src=Miniatura.gif>

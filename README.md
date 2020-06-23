@@ -790,7 +790,8 @@ class sp2_(Scene):
         self.wait(2)
 
 ```
-
+El resultado es:
+ ![](sp2_2.gif)
 ```python
 class sp_(Scene):
     def construct(self):

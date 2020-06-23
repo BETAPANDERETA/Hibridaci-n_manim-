@@ -1,9 +1,13 @@
-### Hibridación de orbitales hecho en Manim (versión 3/Feb/2019 - python)
+# Principios de Química.
+## Hibridación de orbitales hecho en Manim.
+
 
 ### Autores:
-    Daniel Germán Martínez Muñoz  (Usuario github: dmartinezmu).
-    Leonardo Felipe Betancur Díaz (Usuario github: BETAPANDERETA).
-    Julian Felipe Ramirez Pardo   (Usuario github: julianramirez34).
+Daniel Germán Martínez Muñoz  (Usuario github: dmartinezmu).
+
+Leonardo Felipe Betancur Díaz (Usuario github: BETAPANDERETA).
+
+Julian Felipe Ramirez Pardo   (Usuario github: julianramirez34).
 
 <p align="center">
   <img width="460" height="300" src=Miniatura.gif>
@@ -18,10 +22,15 @@ Los requisitos y la guía para instalar manim se encuentran en:  [Manim 3b1b](ht
 </p>
 
 ### Aplicaciones usadas:
-    Adobe Illustrator CC -> Ilustraciones realizadas.
-    Adobe Premiere Pro   -> Edición video.
-    Adobe Audition       -> Edición audio.
-    Sony Vegas           -> Edición video.
+Adobe Illustrator CC -> Ilustraciones realizadas.
+
+Adobe Premiere Pro   -> Edición video.
+
+Adobe Audition       -> Edición audio.
+
+Sony Vegas           -> Edición video.
+ 
+MATLAB -> Gráficas      
 
 -![](audition.png)
 ### Fuentes de interés y agradecimientos:
@@ -31,6 +40,8 @@ Para los 3D Plots:[Theorem of Beethoven](https://github.com/Elteoremadebeethoven
 Para las gráficas 2D: [Talking Physics](https://talkingphysics.wordpress.com/2018/06/22/graphing-functions-manim-series-part-7/)
 
 Documentación: [Manim](https://manim.readthedocs.io/en/latest/)
+
+Gráficas MATLAB : Evan (2020). plot Hydrogen Atom Molecular Orbital [link](https://www.mathworks.com/matlabcentral/fileexchange/44604-plot-hydrogen-atom-molecular-orbital), MATLAB Central File Exchange. Retrieved June 23, 2020.
 
 ## Agradecimiento especial:
 
@@ -45,7 +56,7 @@ import math
 ```
 
 Además del conocimiento del lenguaje python, es necesario conocer latex.
-### Escenas 
+## Escenas 
 ```python
 class IntroErwin(Scene):
 

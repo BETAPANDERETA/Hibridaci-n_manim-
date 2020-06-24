@@ -1,17 +1,16 @@
-# Principios de Química.
 ## Hibridación de orbitales hecho en Manim.
 
+<p align="center">
+  <img width="460" height="300" src=miniatura.gif>
+</p>
 
 ### Autores:
 Daniel Germán Martínez Muñoz  (Usuario github: dmartinezmu).
 
-Leonardo Felipe Betancur Díaz (Usuario github: BETAPANDERETA).
+Leonardo Felipe Betancur Díaz
 
-Julian Felipe Ramirez Pardo   (Usuario github: julianramirez34).
 
-<p align="center">
-  <img width="460" height="300" src=Miniatura.gif>
-</p>
+
 
 Producción audiovisual e ilustrativa de hibridación de orbitales.
 Los requisitos y la guía para instalar manim se encuentran en:  [Manim 3b1b](https://github.com/3b1b/manim)
@@ -32,7 +31,6 @@ Sony Vegas           -> Edición video.
  
 MATLAB -> Gráficas      
 
--![](audition.png)
 ### Fuentes de interés y agradecimientos:
 
 Para los 3D Plots:[Theorem of Beethoven](https://github.com/Elteoremadebeethoven/AnimationsWithManim/blob/master/English/6b_plots_3D/scenes.md#programs)
@@ -968,5 +966,5 @@ El resultado es este:
 ![](FunctionTracker.gif)
 
 <p align="center">
-  CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM>
+  CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM
 </p>

@@ -114,7 +114,7 @@ class SpDosCarbono(ThreeDScene):
 
             def construct(self):
 
-                # controls how many squares the approximation grid is broken into
+                # Ctdad de subdivisiones en la superficie
                 parametric_resolution = 50
                 r_scale = 0.35
 

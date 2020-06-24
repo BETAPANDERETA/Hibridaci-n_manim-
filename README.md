@@ -19,15 +19,6 @@ Los requisitos y la guía para instalar manim se encuentran en:  [Manim 3b1b](ht
 <p align="center">
 	El video FINAL con voz y edición es este [RESULTADO FINAL] #Video final link#
 </p>
-
-### Aplicaciones usadas:
-Adobe Illustrator CC -> Ilustraciones realizadas.
-
-Adobe Premiere Pro   -> Edición video.
-
-Adobe Audition       -> Edición audio.
-
-Sony Vegas           -> Edición video.
  
 MATLAB -> Gráficas      
 

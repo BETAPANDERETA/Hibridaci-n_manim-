@@ -48,6 +48,9 @@ Gráficas MATLAB : Evan (2020). plot Hydrogen Atom Molecular Orbital [link](http
 Para el óvalo de cassini al usuario del level 314: [level 314 youtube channel](https://www.youtube.com/watch?v=zReqQ8NMsI0)
 
 ### Módulos y librerías necesarios:
+Pymol -> Animaciones.
+
+Manim -> Animaciones. Codigo en python:
 ```python
 		
 #!/usr/bin/env python
@@ -56,7 +59,11 @@ import math
 ```
 
 Además del conocimiento del lenguaje python, es necesario conocer latex.
-## Escenas 
+## Escenas
+
+Gif hecho con Pymol (Módulo de python):
+-![](qf2.gif)
+Representación del Metano (Tetraédrica).
 ```python
 class IntroErwin(Scene):
 
@@ -862,6 +869,103 @@ class sp_(Scene):
 ```
 El resultado es este: 
 ![](compl_2.gif)
+
+```python
+class FunctionTracker(Scene):
+    def construct(self):
+        
+        x_value = ValueTracker(2020)
+        
+        # DecimalNumber definition
+        x_tex = DecimalNumber(x_value.get_value()).add_updater(lambda v: v.set_value(x_value.get_value()))
+        
+        # TeX labels definition
+        x_label = TexMobject(" ")
+        
+        # Grouping of labels and numbers
+        group = VGroup(x_tex,x_label)
+        # Set the labels position
+        x_label.next_to(x_tex,LEFT, buff=0.7,aligned_edge=x_label.get_bottom())
+        
+        # Grouping numbers and labels
+        x_group = VGroup(x_label,x_tex).scale(2)
+        x_group.move_to(UP*2)
+        
+        
+        # Align labels and numbers
+        
+        # Get NumberLine,Arrow and label from x
+        x_number_line_group = self.get_number_line_group(
+            "x",2020,0.1,step_label=100,v_tracker=x_value,tick_frequency=2
+            )
+        x_number_line_group.to_edge(LEFT,buff=1)
+        # Get NumberLine,Arrow and label from f(x)
+       
+       
+
+        self.add(
+            x_number_line_group,
+            
+            group
+            )
+        self.wait()
+        
+
+        
+        self.play(
+            x_value.set_value,1911,
+            rate_func=linear,
+            run_time=10
+            )
+        self.wait(3)
+
+
+    def get_numer_labels_to_numberline(self,number_line,x_max=None,x_min=0,buff=0.2,step_label=1,**tex_kwargs):
+        # This method return the labels of the NumberLine
+        labels = VGroup()
+        x_max = number_line.x_max
+        for x in range(1911,x_max+1,step_label):
+            x_label = TexMobject(f"{x}",**tex_kwargs)
+            # See manimlib/mobject/number_line.py CONFIG dictionary
+            x_label.next_to(number_line.number_to_point(x),DOWN,buff=buff)
+            labels.add(x_label)
+        x = 2020
+        x_label = TexMobject(f"{x}",**tex_kwargs)
+        x_label.next_to(number_line.number_to_point(x),DOWN,buff=buff)
+        labels.add(x_label)
+        return labels
+
+    def get_number_line_group(self,label,x_max,unit_size,v_tracker,step_label=1,**number_line_config):
+        # Set the Label (x,or x**2)
+        number_label = TexMobject(label)
+        # Set the arrow 
+        arrow = Arrow(UP,DOWN,buff=0).set_height(0.5)
+        # Set the number_line
+        number_line = NumberLine(
+            x_min=1911,
+            x_max=x_max,
+            unit_size=unit_size,
+            numbers_with_elongated_ticks=[],
+            **number_line_config
+            )
+        # Get the labels from number_line
+        labels = self.get_numer_labels_to_numberline(number_line,step_label=step_label,height=0.2)
+        # Set the arrow position
+        arrow.next_to(number_line.number_to_point(1911),UP,buff=0)
+        # Grouping arrow and number_label
+        label = VGroup(arrow,number_label)
+        # Set the position of number_label
+        number_label.next_to(arrow,UP,buff=0.1)
+        # Grouping all elements
+        numer_group = VGroup(label,number_line,labels)
+        # Set the updater to the arrow and number_label
+        label.add_updater(lambda mob: mob.next_to(number_line.number_to_point(v_tracker.get_value()),UP,buff=0))
+
+        return numer_group
+
+```
+El resultado es este: 
+![](FunctionTracker.gif)
 
 <p align="center">
   CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM>

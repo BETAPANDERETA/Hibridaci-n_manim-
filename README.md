@@ -62,6 +62,9 @@ Además del conocimiento del lenguaje python, es necesario conocer latex.
 Gif hecho con Pymol (Módulo de python):
 -![](qf2.gif)
 Representación del Metano (Tetraédrica).
+
+Gráficas diseñadas cpm MATLAB
+-![](4.png)
 ```python
 class IntroErwin(Scene):
 

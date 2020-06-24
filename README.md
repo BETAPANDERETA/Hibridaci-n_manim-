@@ -65,6 +65,100 @@ Representación del Metano (Tetraédrica).
 
 Gráficas diseñadas cpm MATLAB
 -![](4.png)
+
+Gráfica del orbital sp2 del carbono
+
+```python
+foci_A = 1
+foci_B = 1
+class SpDosCarbono(ThreeDScene):
+
+            def parametric_CO(self, u, v):
+                # 2d Cassini Oval
+                M = (foci_A ** 2) * np.cos(2 * u) \
+                    + (np.sqrt((foci_B ** 4) - (foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2))))
+                x = np.cos(u) * np.sqrt(M)
+                y = np.sin(u) * np.sqrt(M)
+
+                # 3D Rotación en X
+                z = y * np.sin(v)
+                y = y * np.cos(v)
+
+                return np.array([x, y, z])
+
+            def parametric_CO_z(self, u, v):
+                # 2d Cassini Oval
+                M = (foci_A ** 2) * np.cos(2 * u) \
+                    + (np.sqrt((foci_B ** 4) - (foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2))))
+                z = np.cos(u) * np.sqrt(M)
+                x = np.sin(u) * np.sqrt(M)
+
+                # 3D Rotación en Z
+                y = x * np.sin(v)
+                x = x * np.cos(v)
+
+                return np.array([x, y, z])
+
+            def parametric_CO_z2(self, u, v):
+                #2d Cassini Oval
+                M = (foci_A ** 2) * np.cos(2 * u) \
+                    + (np.sqrt((foci_B ** 4) - (foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2))))
+                z = np.cos(u) * np.sqrt(M)
+                x = np.sin(u) * np.sqrt(M)
+
+                # 3D Rotación en Z
+                y = x * np.sin(v)
+                x = x * np.cos(v)
+
+                return np.array([x, y/2, z])
+
+            def construct(self):
+
+                # controls how many squares the approximation grid is broken into
+                parametric_resolution = 50
+                r_scale = 0.35
+
+                boundaries = {"u_min": 0, "u_max": TAU, "v_min": 0, "v_max": PI}
+
+                cassini_oval_x = ParametricSurface(
+                    self.parametric_CO, **boundaries
+                    , checkerboard_colors=[BLUE],
+                    resolution=(parametric_resolution,
+                    math.floor(parametric_resolution * r_scale))).scale(1.5)
+
+                cassini_oval_z = ParametricSurface(
+                    self.parametric_CO_z, **boundaries
+                    , checkerboard_colors=[BLUE],
+                    resolution=(parametric_resolution,
+                    math.floor(parametric_resolution * r_scale))).scale(1.5)
+
+                cassini_oval_z_2 = ParametricSurface(
+                    self.parametric_CO_z2, **boundaries
+                    , checkerboard_colors=[RED],
+                    resolution=(parametric_resolution, math.floor(parametric_resolution * r_scale))).scale(1.5)
+
+                axes = ThreeDAxes()
+
+                self.set_camera_orientation(phi=80 * DEGREES)
+                self.begin_ambient_camera_rotation(rate=0.2)
+                cassini_oval_z.rotate(PI / 2, axis=RIGHT)
+
+                self.play(
+
+                    ShowCreation(axes),
+                    ShowCreation(cassini_oval_x),
+                    ShowCreation(cassini_oval_z),
+                    ShowCreation(cassini_oval_z_2)
+
+                )
+
+                self.wait(5)
+
+```
+El resultado es este:
+-![](SpOrb.png)
+
+
 ```python
 class IntroErwin(Scene):
 

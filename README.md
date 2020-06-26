@@ -1140,7 +1140,7 @@ class SpDosCarbono1(ThreeDScene):
                 self.wait(22)
 ```
 El resultado es este: 
-![](FunctionTracker.gif)
+![](SpDosCarbono.gif)
 ```python
 class SpCarbono1(ThreeDScene):
     
@@ -1226,7 +1226,7 @@ class SpCarbono1(ThreeDScene):
                 self.wait(22)
 ```
 El resultado es este: 
-![](FunctionTracker.gif)
+![](SpCarbono.gif)
 <p align="center">
   CÓDIGO FINAL ESTÁ EN EL REPO, Y FUE ESCRITO PARA LA VERSIÓN MÁS RECIENTE DE MANIM
 </p>

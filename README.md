@@ -16,11 +16,24 @@ Producción audiovisual e ilustrativa de hibridación de orbitales.
 Los requisitos y la guía para instalar manim se encuentran en:  [Manim 3b1b](https://github.com/3b1b/manim)
 
 
-<p align="center">
-	El video FINAL con voz y edición es este [RESULTADO FINAL] #Video final link#
-</p>
- 
-MATLAB -> Gráficas      
+## Links
+
+El video FINAL  [RESULTADO FINAL](https://www.youtube.com/watch?v=LQhkJ5NbZIs&feature=youtu.be)
+
+Explicación de Manim [EXPLICACIÓN](https://www.youtube.com/watch?v=PXTfR_aAq0A&feature=youtu.be)
+
+### Aplicaciones usadas.
+MATLAB -> Gráficas    
+
+Adobe Audition -> Edición de audio.
+
+Adobe Premiere Pro -> Edición de video.
+
+Adobe Illustrator -> Configuración electronica (Representación por cajas)
+
+Adobe Photoshop -> Edición de imagen.
+
+Sony Vegas -> Edición de video.
 
 ### Fuentes de interés y agradecimientos:
 
@@ -56,98 +69,6 @@ Representación del Metano (Tetraédrica).
 
 Gráficas diseñadas cpm MATLAB
 -![](4.png)
-
-Gráfica del orbital sp2 del carbono
-
-```python
-foci_A = 1
-foci_B = 1
-class SpDosCarbono(ThreeDScene):
-
-            def parametric_CO(self, u, v):
-                # 2d Cassini Oval
-                M = (foci_A ** 2) * np.cos(2 * u) \
-                    + (np.sqrt((foci_B ** 4) - (foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2))))
-                x = np.cos(u) * np.sqrt(M)
-                y = np.sin(u) * np.sqrt(M)
-
-                # 3D Rotación en X
-                z = y * np.sin(v)
-                y = y * np.cos(v)
-
-                return np.array([x, y, z])
-
-            def parametric_CO_z(self, u, v):
-                # 2d Cassini Oval
-                M = (foci_A ** 2) * np.cos(2 * u) \
-                    + (np.sqrt((foci_B ** 4) - (foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2))))
-                z = np.cos(u) * np.sqrt(M)
-                x = np.sin(u) * np.sqrt(M)
-
-                # 3D Rotación en Z
-                y = x * np.sin(v)
-                x = x * np.cos(v)
-
-                return np.array([x, y, z])
-
-            def parametric_CO_z2(self, u, v):
-                #2d Cassini Oval
-                M = (foci_A ** 2) * np.cos(2 * u) \
-                    + (np.sqrt((foci_B ** 4) - (foci_A ** 4) + ((foci_A ** 4) * (np.cos(2 * u) ** 2))))
-                z = np.cos(u) * np.sqrt(M)
-                x = np.sin(u) * np.sqrt(M)
-
-                # 3D Rotación en Z
-                y = x * np.sin(v)
-                x = x * np.cos(v)
-
-                return np.array([x, y/2, z])
-
-            def construct(self):
-
-                # Ctdad de subdivisiones en la superficie
-                parametric_resolution = 50
-                r_scale = 0.35
-
-                boundaries = {"u_min": 0, "u_max": TAU, "v_min": 0, "v_max": PI}
-
-                cassini_oval_x = ParametricSurface(
-                    self.parametric_CO, **boundaries
-                    , checkerboard_colors=[BLUE],
-                    resolution=(parametric_resolution,
-                    math.floor(parametric_resolution * r_scale))).scale(1.5)
-
-                cassini_oval_z = ParametricSurface(
-                    self.parametric_CO_z, **boundaries
-                    , checkerboard_colors=[BLUE],
-                    resolution=(parametric_resolution,
-                    math.floor(parametric_resolution * r_scale))).scale(1.5)
-
-                cassini_oval_z_2 = ParametricSurface(
-                    self.parametric_CO_z2, **boundaries
-                    , checkerboard_colors=[RED],
-                    resolution=(parametric_resolution, math.floor(parametric_resolution * r_scale))).scale(1.5)
-
-                axes = ThreeDAxes()
-
-                self.set_camera_orientation(phi=80 * DEGREES)
-                self.begin_ambient_camera_rotation(rate=0.2)
-                cassini_oval_z.rotate(PI / 2, axis=RIGHT)
-
-                self.play(
-
-                    ShowCreation(axes),
-                    ShowCreation(cassini_oval_x),
-                    ShowCreation(cassini_oval_z),
-                    ShowCreation(cassini_oval_z_2)
-
-                )
-
-                self.wait(5)
-
-```
-El resultado es este:
--![](SpOrb.png)
 
 
 ```python
